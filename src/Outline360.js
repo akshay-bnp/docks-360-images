@@ -3458,29 +3458,27 @@ class Outline360 extends Component {
       };
 
       handleMouseOver = (e) => {
-   
+        const { houseDetails } = this.state
         let tooltip = document.getElementById("tool-tip");
         if(Array.from(e.target.classList).includes("outline_polygon_normal")){
+            let houseDetail = houseDetails[parseInt(e.target.getAttribute("data-index"))]
             tooltip.style.display = "block";
             tooltip.style.left = ((e.clientX + 10) + 'px');
             tooltip.style.top = (e.clientY + 'px');
-            console.log(e);
+            tooltip.innerText = houseDetail.name;
         }else{
             tooltip.style.display = "none";
         }
       };
     updateOutline = (index) => {
-        // this.setState({
-        //     name: newname
-        // });
-        console.log(index)
+
         let _parent = this.svgOutline.current;
         _parent.querySelectorAll('*').forEach(n => n.remove());
         const { svgCoords, houseDetails } = this.state;
         let _coords = svgCoords[index].points;
         _coords.map((value, idx) => {
             let avaialbility = houseDetails[idx].availability;
-            let polygon = this.createCustomElement(value,avaialbility);
+            let polygon = this.createCustomElement(value,avaialbility, idx);
             // _parent.innerHTML += polygon
             _parent.appendChild(polygon)
         });
@@ -3498,47 +3496,15 @@ class Outline360 extends Component {
     }
 
 
-    createCustomElement(points, availability) {
+    createCustomElement(points, availability, houseIndex) {
         var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         polygon.setAttribute("points", points);
+        polygon.setAttribute("data-index", houseIndex);
         polygon.setAttribute("class", `outline_polygon_normal ${availability.toLowerCase()}`)
-        // polygon.setAttribute("onClick", this.onClickPolygon)
         polygon.addEventListener("click", () => this.onClickPolygon(polygon));
 
-        // polygon.setAttribute("data-tooltip-html",ReactDOMServer.renderToStaticMarkup(<div>I am <b>JSX</b> content</div>))
-        // polygon.setAttribute("data-tooltip-id","my-tooltip")
-
-        // polygon.append(
-        //     ` <div class="hovercard">
-        //     <div class="cover-image">
-        //       <div class="avatar">A
-        //       </div>
-        //       <div class="username">Plain Water</div>
-        //     </div>
-        //     <div class="points">2,345</div>
-        //     <ul class="stats">
-        //       <li class="stats-item">Content Count: </li>
-        //       <li class="stats-item">Joined: </li>
-        //       <li class="stats-item">Last Visited: </li> 
-        //     </ul>
-        //   </div>`
-        // )
         return polygon;
-        // return `<polygon  class= "outline_polygon_normal available"  points= ${points} >
-        //             <div class="hovercard">
-        //                 <div class="cover-image">
-        //                     <div class="avatar">A</div>
-        //                     <div class="username">Plain Water</div>
-        //                 </div>
-        //                 <div class="points">2,345</div>
-        //                 <ul class="stats">
-        //                     <li class="stats-item">Content Count: </li>
-        //                     <li class="stats-item">Joined: </li>
-        //                     <li class="stats-item">Last Visited: </li> 
-        //                 </ul>
-        //             </div>
-        //      </polygon>
-        //   `;
+
     }
 
     render = () => {
