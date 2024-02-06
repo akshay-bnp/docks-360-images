@@ -99,6 +99,7 @@ class React360 extends Component {
           alt=""
           src={require(`./${this.props.dir}/${imageIndex}.jpeg`)}
         />
+        <p id="tool-tip"> Home details </p>
       </div>
     );
   };
