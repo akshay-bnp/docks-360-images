@@ -35,14 +35,16 @@ class React360 extends Component {
     this.setState(state => ({
       dragging: true,
       dragStart: e.screenX,
-      dragStartIndex: state.imageIndex,
-      showSVG:false 
+      dragStartIndex: state.imageIndex
     }));
   };
 
   handleMouseUp = () => {
-    this.setState({ dragging: false, showSVG:true });
-    this.svgOutline.current.updateOutline(this.state.imageIndex);
+    if(this.state.dragging){
+      this.setState({ dragging: false, showSVG:true });
+      this.svgOutline.current.updateOutline(this.state.imageIndex);
+    }
+
 
   };
 
@@ -68,6 +70,8 @@ class React360 extends Component {
   handleMouseMove = e => {
     if (this.state.dragging) {
       this.updateImageIndex(e.screenX);
+      this.setState({ showSVG:false})
+      
     }
   };
 
@@ -84,11 +88,12 @@ class React360 extends Component {
   }
 
   renderImage = () => {
-    const { imageIndex,showSVG } = this.state;
+    const { imageIndex } = this.state;
 
     return (
-      <div className="react360">
-       { showSVG && <Outline360 ref={this.svgOutline} />}
+      <div className="react360" onMouseDown={this.handleMouseDown}
+      onDragStart={this.preventDragHandler} >
+       
         <img
           className="react-360-img img-fluid "
           alt=""
@@ -99,13 +104,17 @@ class React360 extends Component {
   };
 
   render = () => {
+    const {showSVG} = this.state;
     return (
       <div
         className="react-360-img"
-        onMouseDown={this.handleMouseDown}
-        onDragStart={this.preventDragHandler}
       >
+
         {this.renderImage()}
+        {/* { showSVG && <Outline360 ref={this.svgOutline} />} */}
+        { showSVG && <div className="react360" pointerEvents="none" >
+          <Outline360 ref={this.svgOutline} />
+        </div>}
       </div>
     );
   };

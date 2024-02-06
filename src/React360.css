@@ -1,96 +1,176 @@
 .react360 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    
-  }
-  
-  .icon-react360 {
-      height: 4em;
-      position: fixed;
-      padding-top: 3em;
-      z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+}
+
+.icon-react360 {
+  height: 4em;
+  position: fixed;
+  padding-top: 3em;
+  z-index: 2;
+}
+
+.react360>img {
+  max-width: 85%;
+  height: auto;
+  top: 1%;
+  position: fixed;
+}
+
+.react360>svg {
+  position: absolute;
+  max-width: 85%;
+  height: auto;
+  top: 1%;
+  z-index: 1;
+}
+
+.outline_polygon_normal {
+  fill: white;
+  pointer-events: visiblePainted;
+
+}
+
+.outline_polygon_normal:hover {
+  fill: rgba(255, 255, 255, 0);
+}
+
+.tooltiptext {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #0366d6;
+  padding: 18px;
+  border-radius: 5px;
+  color: white;
+  line-height: 15px;
+  transition: 1s;
+  width: 200px;
+}
+
+.hovercard {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+  left: 50%;
+  top: -90px;
+  transform: translateX(-50%);
+}
+
+.outline_polygon_normal:hover .hovercard {
+  opacity: 1;
+  transition: 0.5s;
+  transition-delay: 0.1s;
+}
+
+.sold {
+  fill: red;
+  opacity: 0.5;
+  stroke-width: 5px;
+  stroke-opacity: 1;
+  stroke: red;
+}
+
+.available {
+  fill: rgb(19, 211, 99);
+  opacity: 0.3;
+  stroke-width: 5px;
+  stroke-opacity: 1;
+  stroke: rgb(41, 83, 58);
+}
+
+.reserved {
+  fill: rgb(241, 245, 35);
+  opacity: 0.3;
+  stroke-width: 5px;
+  stroke-opacity: 1;
+  stroke: rgb(241, 245, 35);
+}
+
+.unavailable {
+  fill: rgba(216, 216, 216, 0.842);
+  opacity: 0.3;
+  stroke-width: 5px;
+  stroke-opacity: 1;
+  stroke: rgb(92, 92, 92);
+}
+
+.animateBlink {
+  animation: 1s animateBlink ease-in infinite;
+}
+
+
+@keyframes animateBlink {
+  from {
+    opacity: 0.0;
   }
 
-  .react360 > img{
-    max-width: 82%;
+  50% {
+    opacity: 0.15;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+/* Media Queries */
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+  .react360>img {
+    max-width: 100%;
     height: auto;
     top: 1%;
     position: fixed;
   }
 
-  .react360 > svg{
+  .icon-react360 {
+    display: none;
+  }
+
+  .react360>svg {
     position: absolute;
-    max-width: 82%;
+    max-width: 100%;
     height: auto;
     top: 1%;
-    z-index:1;
-  }
-
-  .outline_polygon_normal{
-    fill : white;
-
-  }
-
-  .outline_polygon_normal:hover {
-    fill: rgba(255, 255, 255, 0);
-  }
-
-  .tooltiptext {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start; 
-    background-color: #0366d6;
-    padding: 18px; 
-    border-radius: 5px; 
-    color: white; 
-    line-height: 15px;
-    transition: 1s;
-    width: 200px;
-  }
-
-  .hovercard { 
-    position: absolute; 
-    opacity: 0; 
     z-index: 1;
-    left: 50%;
-    top: -90px;
-    transform: translateX(-50%);
   }
+}
 
-  .outline_polygon_normal:hover .hovercard { 
-    opacity: 1; 
-    transition: 0.5s;
-    transition-delay: 0.1s;
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+  body {
+    background-color: rgba(0, 0, 0, 0.856);
   }
+}
 
-  .sold{
-    fill : red;
-    opacity: 0.5;
-    stroke-width: 2px;
-    stroke-opacity: 1;
-    stroke: red;
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    background-color: rgba(0, 0, 0, 0.856);
   }
+}
 
-  .available{
-    fill : rgb(19, 211, 99);
-    opacity: 0.3;
-    stroke-width: 5px;
-    stroke-opacity: 1;
-    stroke: rgb(41, 83, 58);
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  body {
+    background-color: rgba(0, 0, 0, 0.856);
   }
+}
 
-  .reserve{
-    fill : rgb(241, 245, 35);
-    opacity: 0.3;
-    stroke-width: 2px;
-    stroke-opacity: 1;
-    stroke: rgb(241, 245, 35);
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  body {
+    background-color: rgba(0, 0, 0, 0.856);
   }
+}

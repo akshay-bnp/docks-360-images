@@ -6,8 +6,10 @@ class Outline360 extends Component {
     constructor(props) {
         super(props);
         this.svgOutline = createRef();
+        this.selectedPolygon = null;
     }
     state = {
+        selectedPolygon : null,
         svgCoords:
             [
                 {
@@ -3451,40 +3453,42 @@ class Outline360 extends Component {
         // this.setState({
         //     name: newname
         // });
+        console.log(index)
         let _parent = this.svgOutline.current;
         _parent.querySelectorAll('*').forEach(n => n.remove());
-        const { svgCoords } = this.state;
+        const { svgCoords, houseDetails } = this.state;
         let _coords = svgCoords[index].points;
-        console.log(`iNDE : ${index}`)
-        _coords.map((value) => {
-            let polygon = this.createCustomElement(value);
+        _coords.map((value, idx) => {
+            let avaialbility = houseDetails[idx].availability;
+            let polygon = this.createCustomElement(value,avaialbility);
             // _parent.innerHTML += polygon
             _parent.appendChild(polygon)
         });
     };
 
-    createCustomElement(points) {
+    onClickPolygon = (elem) => {
+        const {selectedPolygon} = this.state;
+        if(selectedPolygon != null){
+            selectedPolygon.classList.remove("animateBlink")
+        }
+        elem.classList.add("animateBlink");
+        this.setState({
+            selectedPolygon : elem
+
+        })
+    }
+
+    componentDidMount() {
+        this.updateOutline(0);
+     }
+
+    createCustomElement(points, availability) {
         var polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         polygon.setAttribute("points", points);
-        polygon.setAttribute("class", "outline_polygon_normal available")
-        // polygon.setAttribute("data-tooltip-html",ReactDOMServer.renderToStaticMarkup(<div>I am <b>JSX</b> content</div>))
-        // polygon.setAttribute("data-tooltip-id","my-tooltip")
+        polygon.setAttribute("class", `outline_polygon_normal ${availability.toLowerCase()}`)
+        // polygon.setAttribute("onClick", this.onClickPolygon)
+        polygon.addEventListener("click", () => this.onClickPolygon(polygon));
 
-        // polygon.append(
-        //     ` <div class="hovercard">
-        //     <div class="cover-image">
-        //       <div class="avatar">A
-        //       </div>
-        //       <div class="username">Plain Water</div>
-        //     </div>
-        //     <div class="points">2,345</div>
-        //     <ul class="stats">
-        //       <li class="stats-item">Content Count: </li>
-        //       <li class="stats-item">Joined: </li>
-        //       <li class="stats-item">Last Visited: </li> 
-        //     </ul>
-        //   </div>`
-        // )
         return polygon;
         // return `<polygon  class= "outline_polygon_normal available"  points= ${points} >
         //             <div class="hovercard">
@@ -3505,7 +3509,7 @@ class Outline360 extends Component {
 
     render = () => {
         return (
-            <svg ref={this.svgOutline} viewBox="0 0 1920 1080">
+            <svg ref={this.svgOutline} viewBox="0 0 1920 1080" pointerEvents="none">
                 <g className="_3desm__viewer-new-action-elements__flats"></g>
             </svg>
 
