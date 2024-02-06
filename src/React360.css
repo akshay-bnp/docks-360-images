@@ -1,0 +1,96 @@
+.react360 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    
+  }
+  
+  .icon-react360 {
+      height: 4em;
+      position: fixed;
+      padding-top: 3em;
+      z-index: 2;
+  }
+
+  .react360 > img{
+    max-width: 82%;
+    height: auto;
+    top: 1%;
+    position: fixed;
+  }
+
+  .react360 > svg{
+    position: absolute;
+    max-width: 82%;
+    height: auto;
+    top: 1%;
+    z-index:1;
+  }
+
+  .outline_polygon_normal{
+    fill : white;
+
+  }
+
+  .outline_polygon_normal:hover {
+    fill: rgba(255, 255, 255, 0);
+  }
+
+  .tooltiptext {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    background-color: #0366d6;
+    padding: 18px; 
+    border-radius: 5px; 
+    color: white; 
+    line-height: 15px;
+    transition: 1s;
+    width: 200px;
+  }
+
+  .hovercard { 
+    position: absolute; 
+    opacity: 0; 
+    z-index: 1;
+    left: 50%;
+    top: -90px;
+    transform: translateX(-50%);
+  }
+
+  .outline_polygon_normal:hover .hovercard { 
+    opacity: 1; 
+    transition: 0.5s;
+    transition-delay: 0.1s;
+  }
+
+  .sold{
+    fill : red;
+    opacity: 0.5;
+    stroke-width: 2px;
+    stroke-opacity: 1;
+    stroke: red;
+  }
+
+  .available{
+    fill : rgb(19, 211, 99);
+    opacity: 0.3;
+    stroke-width: 5px;
+    stroke-opacity: 1;
+    stroke: rgb(41, 83, 58);
+  }
+
+  .reserve{
+    fill : rgb(241, 245, 35);
+    opacity: 0.3;
+    stroke-width: 2px;
+    stroke-opacity: 1;
+    stroke: rgb(241, 245, 35);
+  }
