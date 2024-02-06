@@ -108,7 +108,28 @@ class React360 extends Component {
           alt=""
           src={require(`./${this.props.dir}/${imageIndex}.jpeg`)}
         />
-        <p id="tool-tip"> Home details </p>
+        <div id="tool-tip">
+          <div className="tool-tip-header" id="tool-tip-header">
+          <div>
+              <p style={{ fontWeight : "bold"}}>Unit</p>
+              <p id="tool-tip-unit">152</p>
+            </div>
+            <div className="tool-tip-price">
+              <p id="availability-dot"></p>
+              <p id="tool-tip-availability">Available</p>
+            </div>
+          </div>
+          <div className="tool-tip-body">
+            <div>
+              <p style={{ fontWeight : "bold"}}>Surface</p>
+              <p id="tool-tip-surface">85</p>
+            </div>
+            <div>
+              <p style={{ fontWeight : "bold"}}>Price</p>
+              <p id="tool-tip-price">1500000</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
