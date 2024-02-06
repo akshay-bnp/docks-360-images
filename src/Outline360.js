@@ -3459,13 +3459,40 @@ class Outline360 extends Component {
 
       handleMouseOver = (e) => {
         const { houseDetails } = this.state
+
         let tooltip = document.getElementById("tool-tip");
+        let homeUnit = document.getElementById("tool-tip-unit");
+        let homeAvailability = document.getElementById("tool-tip-availability");
+        let homeAvailabilitySign = document.getElementById("availability-dot");
+        let homeSurface = document.getElementById("tool-tip-surface");
+        let homePrice = document.getElementById("tool-tip-price");
+
+        //check home on hover
         if(Array.from(e.target.classList).includes("outline_polygon_normal")){
             let houseDetail = houseDetails[parseInt(e.target.getAttribute("data-index"))]
             tooltip.style.display = "block";
             tooltip.style.left = ((e.clientX + 10) + 'px');
             tooltip.style.top = (e.clientY + 'px');
-            tooltip.innerText = houseDetail.name;
+
+            homeUnit.innerText = houseDetail.unit;
+            homeAvailability.innerText = houseDetail.availability;
+            homeSurface.innerText = houseDetail.surface;
+            homePrice.innerText = houseDetail.price + "$" ;
+
+            if(houseDetail.availability == "sold"){
+                homeAvailabilitySign.style.background = "red";
+                homeAvailability.style.color = "red";
+            }else if(houseDetail.availability == "available"){
+                homeAvailabilitySign.style.background = "rgb(19, 211, 99)";
+                homeAvailability.style.color = "rgb(19, 211, 99)"
+            }else if(houseDetail.availability == "reserved"){
+                homeAvailabilitySign.style.background = "#ffc300";
+                homeAvailability.style.color = "#ffc300"
+            }else{
+                homeAvailabilitySign.style.background = "rgb(92, 92, 92)";
+                homeAvailability.style.color = "rgb(92, 92, 92)"
+            }
+            // tooltip.innerText = houseDetail.name;
         }else{
             tooltip.style.display = "none";
         }
