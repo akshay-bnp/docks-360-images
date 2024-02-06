@@ -21,16 +21,23 @@ class React360 extends Component {
   };
 
   componentDidMount = () => {
-    document.addEventListener("mousemove", this.handleMouseMove, false);
-    document.addEventListener("mouseup", this.handleMouseUp, false);
+    document.addEventListener("pointermove", this.handleMouseMove, false);
+    document.addEventListener("pointerup", this.handleMouseUp, false);
+
+    // document.addEventListener("touchmove", this.handleMouseMove, false);
+    document.addEventListener("touchend", this.handleMouseUp, false);
   };
 
   componentWillUnmount = () => {
-    document.removeEventListener("mousemove", this.handleMouseMove, false);
-    document.removeEventListener("mouseup", this.handleMouseUp, false);
+    document.removeEventListener("pointermove", this.handleMouseMove, false);
+    document.removeEventListener("pointerup", this.handleMouseUp, false);
+
+    // document.removeEventListener("touch", this.handleMouseMove, false);
+    document.removeEventListener("touchend", this.handleMouseUp, false);
   };
 
   handleMouseDown = e => {
+    console.log("start")
     e.persist();
     this.setState(state => ({
       dragging: true,
@@ -40,6 +47,7 @@ class React360 extends Component {
   };
 
   handleMouseUp = () => {
+    console.log("up")
     if(this.state.dragging){
       this.setState({ dragging: false, showSVG:true });
       this.svgOutline.current.updateOutline(this.state.imageIndex);
@@ -60,7 +68,7 @@ class React360 extends Component {
       index = numImages + index - 1;
     }
     index = (index + dragStartIndex) % numImages;
-    // console.log(index, dragStartIndex, numImages)
+    console.log(index, dragStartIndex, numImages)
     if (index !== imageIndex) {
       this.setState({ imageIndex: index });
     }
@@ -68,6 +76,7 @@ class React360 extends Component {
   };
 
   handleMouseMove = e => {
+    console.log("move")
     if (this.state.dragging) {
       this.updateImageIndex(e.screenX);
       this.setState({ showSVG:false})
@@ -91,7 +100,7 @@ class React360 extends Component {
     const { imageIndex } = this.state;
 
     return (
-      <div className="react360" onMouseDown={this.handleMouseDown}
+      <div className="react360" onPointerDown={this.handleMouseDown} 
       onDragStart={this.preventDragHandler} >
        
         <img
@@ -113,7 +122,7 @@ class React360 extends Component {
 
         {this.renderImage()}
         {/* { showSVG && <Outline360 ref={this.svgOutline} />} */}
-        { showSVG && <div className="react360" pointerEvents="none" >
+        { showSVG && <div className="react360 outline" >
           <Outline360 ref={this.svgOutline} />
         </div>}
       </div>

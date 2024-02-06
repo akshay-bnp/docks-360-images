@@ -1,5 +1,5 @@
 import React, { Component, createRef } from "react";
-import ReactDOMServer from "react-dom/server";
+
 // import { Tooltip } from 'react-tooltip'
 
 class Outline360 extends Component {
@@ -3508,8 +3508,10 @@ class Outline360 extends Component {
     }
 
     render = () => {
+        const {showSVG} = this.state;
+
         return (
-            <svg ref={this.svgOutline} viewBox="0 0 1920 1080" pointerEvents="none">
+            <svg ref={this.svgOutline} viewBox="0 0 1920 1080" >
                 <g className="_3desm__viewer-new-action-elements__flats"></g>
             </svg>
 

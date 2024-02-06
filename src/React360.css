@@ -13,6 +13,10 @@
   user-select: none;
 
 }
+.react360.outline{
+  pointer-events: none;
+  touch-action: none;
+}
 
 .icon-react360 {
   height: 4em;
@@ -34,11 +38,14 @@
   height: auto;
   top: 1%;
   z-index: 1;
+  pointer-events: none;
+  touch-action: none;
 }
 
 .outline_polygon_normal {
   fill: white;
   pointer-events: visiblePainted;
+  touch-action: manipulation;
 
 }
 
@@ -142,8 +149,7 @@
   .react360>img {
     max-width: 100%;
     height: auto;
-    top: 1%;
-    position: fixed;
+
   }
 
   .icon-react360 {
@@ -153,9 +159,7 @@
   .react360>svg {
     position: absolute;
     max-width: 100%;
-    height: auto;
-    top: 1%;
-    z-index: 1;
+
   }
 }
 
@@ -164,6 +168,18 @@
   body {
     background-color: rgba(0, 0, 0, 0.856);
   }
+  .react360>img {
+    max-width: 100%;
+
+  }
+  .icon-react360 {
+    display: none;
+  }
+
+  .react360>svg {
+    max-width: 100%;
+
+  }
 }
 
 /* Media Query for Tablets Ipads portrait mode */
@@ -171,6 +187,7 @@
   body {
     background-color: rgba(0, 0, 0, 0.856);
   }
+
 }
 
 /* Media Query for Laptops and Desktops */
