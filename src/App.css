@@ -22,20 +22,27 @@
 
 .div-360 > div{
   position: absolute;
-    top: 24px;
+    /* top: 24px;
     left: 32px;
-    width: 85%;
+    width: 85%; */
+    top: 50px;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, 0);
 }
 
 
 .div-360 .div-outline{
     position: absolute;
-    top: 24px;
-    left: 32px;
+    /* top: 24px; */
+    /* left: 32px; */
     z-index: 2;
     pointer-events: none;
-    width: 85%;
-
+    /* width: 85%; */
+    top: 50px;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, 0);
 }
 
 
@@ -138,9 +145,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 17px;
+  /* right: 17px; */
   height: 50px;
-  top: 30px;
+  /* top: 30px; */
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .company-logo img{
