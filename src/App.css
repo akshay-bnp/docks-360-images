@@ -163,6 +163,19 @@
   color: #F9E594;
 }
 
+.fullscreen-icon{
+  float: right;
+  position: absolute;
+  right: 1%;
+  top:16px;
+}
+
+.fullscreen{
+  width: 100% !important;
+  top: 0;
+  left: 0;
+}
+
 @keyframes animateBlink {
   from {
     opacity: 0.0;
@@ -225,7 +238,6 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.856);
   }
 
 
@@ -282,7 +294,6 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.856);
   }
 
 
@@ -307,7 +318,6 @@
     left: 50%;
     transform: translate(-50%, 0);
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.856);
   }
 
 
