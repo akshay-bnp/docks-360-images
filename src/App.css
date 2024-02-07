@@ -132,6 +132,26 @@
   animation: 1s animateBlink ease-in infinite;
 }
 
+.company-logo{
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 17px;
+  height: 50px;
+  top: 30px;
+}
+
+.company-logo img{
+  width: 40px;
+}
+
+.company-logo span{
+  font-size: 18px;
+  margin-left: 5px;
+  color: #F9E594;
+}
 
 @keyframes animateBlink {
   from {
@@ -151,6 +171,12 @@
 
 /* Media Query for Mobile Devices */
 @media (max-width: 480px) {
+
+  body{
+    background-color: rgba(0, 0, 0, 0.856);
+  }
+
+
   .react360>img {
     max-width: 100%;
     height: auto;
@@ -166,6 +192,53 @@
     max-width: 100%;
 
   }
+
+  .div-360 > div , .div-360 .div-outline{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .company-logo{
+
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    top: 0;
+
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.856);
+  }
+
+
+  #tool-tip{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    top: 300px;
+
+    background: transparent;
+    border: none;
+  }
+
+  #tool-tip-price , #tool-tip-surface{
+    color: #eee;
+  }
+
+  .tool-tip-body-header{
+    color: gray;
+  }
+
+  
 }
 
 /* Media Query for low resolution  Tablets, Ipads */
@@ -185,6 +258,24 @@
     max-width: 100%;
 
   }
+
+  .div-360 > div , .div-360 .div-outline{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .company-logo{
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.856);
+  }
+
+
 }
 
 /* Media Query for Tablets Ipads portrait mode */
@@ -192,6 +283,23 @@
   body {
     background-color: rgba(0, 0, 0, 0.856);
   }
+
+  .div-360 > div , .div-360 .div-outline{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .company-logo{
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.856);
+  }
+
 
 }
 
@@ -207,4 +315,10 @@
   body {
     background-color: rgba(0, 0, 0, 0.856);
   }
+
+  
 }
+
+
+
+

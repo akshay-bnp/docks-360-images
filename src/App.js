@@ -53,7 +53,7 @@ class App extends Component {
         /> */}
         <div className='div-360'>
 
-          <div className={`div-outline ${showOutline ? " visible" : "hidden"}`}>
+          <div className={`div-outline ${showOutline ? "  visible" : "hidden"}`}>
             <Outline360 ref={this.svgOutline}  />
           </div>
 
@@ -73,19 +73,23 @@ class App extends Component {
             </div>
             <div className="tool-tip-body">
               <div>
-                <p style={{ fontWeight: "bold" }}>Surface</p>
+                <p style={{ fontWeight: "bold" }} className='tool-tip-body-header'>Surface</p>
                 <p id="tool-tip-surface">85</p>
               </div>
               <div>
-                <p style={{ fontWeight: "bold" }}>Price</p>
+                <p style={{ fontWeight: "bold" }} className='tool-tip-body-header'>Price</p>
                 <p id="tool-tip-price">1500000</p>
               </div>
             </div>
           </div>
 
-
+          
         </div>
         {/* <React360 dir="awair-360" onImageChanged={this.onImageChanged} numImages={102} /> */}
+        <div className='company-logo'>
+            <img src='https://static.wixstatic.com/media/653aa8_a306a03117cd453ca29ad1a38bb83664~mv2.png/v1/fill/w_93,h_81,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/b%26p%20iocn_Transparent.png'/>
+            <span>Bricks and Pixels</span>
+          </div>
       </div>
     );
   }
