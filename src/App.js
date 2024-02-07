@@ -57,7 +57,7 @@ class App extends Component {
             <Outline360 ref={this.svgOutline}  />
           </div>
 
-          <Tridi location="./static/media" onFrameChange={this.onImageChanged} onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}
+          <Tridi location="./static/media" maxZoom={1} minZoom={1} inverse={true} onFrameChange={this.onImageChanged} onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}
             format="jpg" count="103" touch={true} onLoadChange={this.onLoadChange} hintOnStartup={true} hintText="Drag to view" />
 
           <div id="tool-tip">
