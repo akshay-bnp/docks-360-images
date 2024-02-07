@@ -10,6 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.svgOutline = createRef();
+    this.parent360 = createRef();
+    this.tridiImage = createRef()
   }
 
   state = {
@@ -42,6 +44,18 @@ class App extends Component {
     this.setState({ showOutline: visible })
   }
 
+  toggleFullScreen = () =>{
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+      // this.tridiImage.current.classList.remove("fullscreen")
+      // this.svgOutline.current.classList.remove("fullscreen")
+    } else {
+      this.parent360.current.requestFullscreen();
+      // this.tridiImage.current.classList.add("fullscreen")
+      // this.svgOutline.current.classList.add("fullscreen")
+    }
+  }
+
   render = () => {
     const { showOutline } = this.state;
     return (
@@ -51,13 +65,13 @@ class App extends Component {
           alt=""
           src={require(`./360_degrees.png`)}
         /> */}
-        <div className='div-360'>
+        <div className='div-360' ref={this.parent360}>
 
           <div className={`div-outline ${showOutline ? "  visible" : "hidden"}`}>
             <Outline360 ref={this.svgOutline}  />
           </div>
 
-          <Tridi location="./static/media" maxZoom={1} minZoom={1} inverse={true} onFrameChange={this.onImageChanged} onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}
+          <Tridi ref={this.tridiImage} location="./static/media" maxZoom={1} minZoom={1} inverse={true} onFrameChange={this.onImageChanged} onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}
             format="jpg" count="103" touch={true} onLoadChange={this.onLoadChange} hintOnStartup={true} hintText="Drag to view" />
 
           <div id="tool-tip">
@@ -89,7 +103,9 @@ class App extends Component {
         <div className='company-logo'>
             <img src='https://static.wixstatic.com/media/653aa8_a306a03117cd453ca29ad1a38bb83664~mv2.png/v1/fill/w_93,h_81,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/b%26p%20iocn_Transparent.png'/>
             <span>Bricks and Pixels</span>
+           
           </div>
+          <a class="fullscreen-icon" onClick={this.toggleFullScreen}><img width={24} src={require("./images/expand.png")} /></a>
       </div>
     );
   }
