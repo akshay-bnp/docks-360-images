@@ -29,11 +29,13 @@
 }
 
 .div-360 > svg{
-  position: absolute;
+    position: absolute;
     top: 24px;
     left: 32px;
     z-index: 2;
+    pointer-events: none;
     width: 85%;
+
 }
 
 .outline_polygon_normal {
