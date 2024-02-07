@@ -13,14 +13,11 @@ class App extends Component {
   }
 
   state = {
-    showSVG: true,
+    showOutline: true,
     currentImageIndex: 0
   }
   onImageChanged = (index) => {
-    this.setState({ currentImageIndex: index, showSVG: true });
-    this.svgOutline.current.updateOutline(this.state.currentImageIndex);
-    console.log('current frame index', index);
-
+    this.setState({ currentImageIndex: index });
   }
 
   onLoadChange = (loaded, percentage) => {
@@ -32,24 +29,36 @@ class App extends Component {
     this.svgOutline.current.updateOutline(0);
   }
 
+  onDragStart = () => {
+    this.toggleOutline(false);
+  }
 
+  onDragEnd = () => {
+    this.toggleOutline(true);
+    this.svgOutline.current.updateOutline(this.state.currentImageIndex);
+  }
+
+  toggleOutline = (visible) => {
+    this.setState({ showOutline: visible })
+  }
 
   render = () => {
-    const { showSVG } = this.state;
+    const { showOutline } = this.state;
     return (
       <div className="App">
-        <img
+        {/* <img
           className="icon-react360"
           alt=""
           src={require(`./360_degrees.png`)}
-        />
+        /> */}
         <div className='div-360'>
-          {showSVG &&
-            <Outline360 ref={this.svgOutline} />
 
-          }
-          <Tridi location="./static/media" onFrameChange={this.onImageChanged}
-            format="jpeg" count="101" touch={true} onLoadChange={this.onLoadChange} />
+          <div className={`div-outline ${showOutline ? " visible" : "hidden"}`}>
+            <Outline360 ref={this.svgOutline}  />
+          </div>
+
+          <Tridi location="./static/media" onFrameChange={this.onImageChanged} onDragStart={this.onDragStart} onDragEnd={this.onDragEnd}
+            format="jpg" count="103" touch={true} onLoadChange={this.onLoadChange} hintOnStartup={true} hintText="Drag to view" />
 
           <div id="tool-tip">
             <div className="tool-tip-header" id="tool-tip-header">
