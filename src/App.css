@@ -18,6 +18,7 @@
   margin: auto;
   max-width: 85%;
   overflow: auto;
+  pointer-events: none;
 }
 
 .div-360 > div{
